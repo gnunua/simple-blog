@@ -2,7 +2,7 @@
   "name": "simple-blog",
   "version": "0.0.1",
   "description": "Simple blog with the ability to view, create and destroy posts functionality",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --inline --hot",
     "build-vendor:prod": "webpack --config webpack.vendor.config.js",

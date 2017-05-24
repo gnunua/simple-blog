@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import TestComponent from "./components/TestComponent";
 
 ReactDOM.render(
     <div>
-        <h1> Hello World! </h1>
-        <h3> simple blog app </h3>
+        <TestComponent/>
     </div>,
     document.getElementById('app')
 );
