@@ -5,18 +5,19 @@ import {
     FETCH_POST_FAIL,
     DELETE_POST_START,
     DELETE_POST_FAIL,
-    DELETE_POST_SUCCESS
+    DELETE_POST_SUCCESS, CREATE_POST_START, CREATE_POST_FAIL, CREATE_POST_SUCCESS
 } from "../actions/actionTypes";
 
-
 const initialData = {
-    post: null,
+    currentPost: null,
     fetchingState: asyncStatus(),
     deletedPost: null,
-    deletingState: asyncStatus()
+    deletingState: asyncStatus(),
+    createdPost: null,
+    creatingState: asyncStatus()
 };
 
-const reducerCurrentPost = (state = initialData, action) => {
+const reducerPost = (state = initialData, action) => {
     switch (action.type) {
         case FETCH_POST_START:
             return {
@@ -32,7 +33,7 @@ const reducerCurrentPost = (state = initialData, action) => {
             return {
                 ...state,
                 fetchingState: asyncStatus(false, true, false, null),
-                post: action.payload
+                currentPost: action.payload
             };
         }
         case DELETE_POST_START:
@@ -49,7 +50,24 @@ const reducerCurrentPost = (state = initialData, action) => {
             return {
                 ...state,
                 deletingState: asyncStatus(false, true, false, null),
-                deletedPost: action.payload,
+                deletedPost: action.payload
+            };
+        }
+        case CREATE_POST_START:
+            return {
+                ...state,
+                creatingState: asyncStatus(true)
+            };
+        case CREATE_POST_FAIL:
+            return {
+                ...state,
+                creatingState: asyncStatus(false, false, true, action.payload)
+            };
+        case CREATE_POST_SUCCESS : {
+            return {
+                ...state,
+                creatingState: asyncStatus(false, true, false, null),
+                createdPost: action.payload
             };
         }
 
@@ -58,4 +76,4 @@ const reducerCurrentPost = (state = initialData, action) => {
     }
 };
 
-export default reducerCurrentPost;
+export default reducerPost;

@@ -15,7 +15,7 @@ class Post extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.deletedDone) {
+        if (this.props.isLoaded === false && nextProps.isLoaded === true) {
             this.props.router.push('/');
         }
     }
@@ -25,10 +25,10 @@ class Post extends Component {
     }
 
     render() {
-        if (!this.props.post) {
+        if (!this.props.currentPost) {
             return (null);
         }
-        const {post: {title, categories, content}} = this.props;
+        const {currentPost: {title, categories, content}} = this.props;
 
         return (
             <div>
@@ -52,8 +52,8 @@ class Post extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    post: state.currentPost.post,
-    deletedDone: ((post, deleted) => post && deleted && post.id === deleted.id)(state.currentPost.post, state.currentPost.deletedPost)
+    currentPost: state.post.currentPost,
+    isLoaded: state.post.deletingState.isLoaded
 });
 
 export default connect(mapStateToProps)(withRouter(Post));

@@ -1,14 +1,13 @@
 import {combineReducers} from "redux";
 import {reducer as createPostFormReducer} from "redux-form";
 import reducerPostsList from "./reducerPostsList";
-import reducerCurrentPost from "./reducerCurrentPost";
+import reducerPost from "./reducerPost";
 
 
 const rootReducer = combineReducers({
     postsList: reducerPostsList,
-    currentPost: reducerCurrentPost,
+    post: reducerPost,
     form: createPostFormReducer
-
 });
 
 export default rootReducer;

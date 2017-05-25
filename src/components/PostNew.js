@@ -1,57 +1,44 @@
-import React from "react";
-import {Link} from "react-router";
+import React, {Component} from "react";
+import {Link, withRouter} from "react-router";
 import {Field, reduxForm} from 'redux-form';
 import {connect} from "react-redux";
 import {createPost} from "../actions";
+import FormFiled from "./FormFiled";
 
-let PostNew = (props) => {
-    const submitHandler = (fromData) => {
-        props.dispatch(createPost(fromData));
-    };
+class PostNew extends Component {
+    constructor(props) {
+        super(props);
+        this.submitHandler = this.submitHandler.bind(this);
+    }
 
-    return (
-        <div>
-            <form onSubmit={props.handleSubmit(submitHandler)}>
-                <Field
-                    name="title"
-                    type="text"
-                    component={renderField}
-                    label="title"
-                />
+    submitHandler(fromData) {
+        this.props.dispatch(createPost(fromData));
+    }
 
-                <Field
-                    name="category"
-                    type="text"
-                    component={renderField}
-                    label="category"
-                />
+    componentWillReceiveProps(nextProps) {
+        if (this.props.isLoaded === false && nextProps.isLoaded === true) {
+            this.props.router.push('/');
+        }
+    }
 
-                <Field
-                    name="content"
-                    type="textarea"
-                    component={renderField}
-                    label="content"
-                />
-
-                <button type="submit" disabled={props.submitting || props.pristine}>Submit</button>
-
-                <Link to="/">Cancel</Link>
-            </form>
-        </div>
-    );
-};
-
-const renderField = ({input, label, type, meta: {touched, error, warning}}) => (
-    <div>
-        <label>{label}</label>
-        <div>
-            <input {...input} placeholder={label} type={type}/>
-            {touched &&
-            ((error && <span>{error}</span>) ||
-            (warning && <span>{warning}</span>))}
-        </div>
-    </div>
-);
+    render() {
+        return (
+            <div>
+                <form onSubmit={this.props.handleSubmit(this.submitHandler)}>
+                    <Field name="title" type="text" component={FormFiled} label="title"/>
+                    <Field name="category" type="text" component={FormFiled} label="category"/>
+                    <Field name="content" type="textarea" component={FormFiled} label="content"/>
+                    <button type="submit" disabled={this.props.submitting || this.props.pristine}>
+                        Submit
+                    </button>
+                    <Link to="/">
+                        Cancel
+                    </Link>
+                </form>
+            </div>
+        );
+    }
+}
 
 const validate = (values) => {
     const errors = {};
@@ -69,9 +56,9 @@ const validate = (values) => {
     return errors;
 };
 
-PostNew = reduxForm({
+const mapStateToProps = (state) => ({isLoaded: state.post.creatingState.isLoaded});
+
+export default reduxForm({
     form: 'createPost',
     validate
-})(connect()(PostNew));
-
-export default PostNew;
+})(connect(mapStateToProps)(withRouter(PostNew)));
