@@ -3,37 +3,22 @@ import {Link} from "react-router";
 import {connect} from "react-redux";
 import {fetchPostList} from "../actions/index";
 import {postListSelector} from "../selectors";
+import PostListItem from "../components/PostListItem";
 
 class PostsList extends Component {
-
     componentDidMount() {
         this.props.dispatch(fetchPostList());
-    }
-
-    getList() {
-        const {posts} = this.props;
-
-        return posts.map(({id, title, categories}) => {
-            return (
-                <li key={id}>
-                    <Link to={"posts/" + id}>
-                        <span>
-                            title {title}
-                        </span>
-                        <span>
-                           category {categories}
-                        </span>
-                    </Link>
-                </li>
-            );
-        });
     }
 
     render() {
         return (
             <div>
                 <ul>
-                    {this.getList()}
+                    {
+                        this.props.posts.map((post) => (
+                            <PostListItem key={post.id} {...post}/>
+                        ))
+                    }
                 </ul>
 
                 <Link to="/posts/new">

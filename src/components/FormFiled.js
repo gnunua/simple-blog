@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 
 const FormFiled = ({input, label, type, meta: {touched, error, warning}}) => (
     <div>

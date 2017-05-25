@@ -3,7 +3,7 @@ import {Link, withRouter} from "react-router";
 import {Field, reduxForm} from 'redux-form';
 import {connect} from "react-redux";
 import {createPost} from "../actions";
-import FormFiled from "./FormFiled";
+import FormFiled from "../components/FormFiled";
 import {createPostSelector} from "../selectors";
 
 class PostNew extends Component {
