@@ -33,7 +33,8 @@ module.exports = {
 
     output: {
         path: __dirname + '/dist',
-        filename: "index_bundle.js"
+        filename: "index_bundle.js",
+        publicPath: '/'
     },
 
     module: {

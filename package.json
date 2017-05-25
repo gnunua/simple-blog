@@ -4,7 +4,7 @@
   "description": "Simple blog with the ability to view, create and destroy posts functionality",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --inline --hot",
+    "start": "webpack-dev-server",
     "build-vendor:prod": "webpack --config webpack.vendor.config.js",
     "build:prod": "webpack --config webpack.config.prod.js -p",
     "build:dev": "webpack --config webpack.config.js",
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/gnunua/simple-blog#readme",
   "dependencies": {
+    "add-asset-html-webpack-plugin": "^2.0.1",
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
     "babel-polyfill": "^6.23.0",
@@ -30,6 +31,7 @@
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.4",
+    "react-router": "^3.0.5",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1",
@@ -37,8 +39,7 @@
     "webpack-dev-middleware": "^1.10.2",
     "webpack-dev-server": "^2.4.5",
     "webpack-hot-middleware": "^2.18.0",
-    "webpack-uglify-js-plugin": "^1.1.9",
-    "add-asset-html-webpack-plugin": "^2.0.1"
+    "webpack-uglify-js-plugin": "^1.1.9"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
