@@ -1,10 +1,10 @@
 import React, {Component} from "react";
-import {Link} from "react-router";
+import {Link, withRouter} from "react-router";
+
 import {connect} from 'react-redux';
 import {fetchPost, deletePost} from "../actions";
 
 class Post extends Component {
-
     constructor(props) {
         super(props);
         this.deletePostHandler = this.deletePostHandler.bind(this);
@@ -14,16 +14,20 @@ class Post extends Component {
         this.props.dispatch(fetchPost(this.props.params.id));
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.deletedDone) {
+            this.props.router.push('/');
+        }
+    }
+
     deletePostHandler() {
         this.props.dispatch(deletePost(this.props.params.id));
     }
 
     render() {
         if (!this.props.post) {
-
             return (null);
         }
-
         const {post: {title, categories, content}} = this.props;
 
         return (
@@ -48,7 +52,8 @@ class Post extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    post: state.currentPost.post
+    post: state.currentPost.post,
+    deletedDone: ((post, deleted) => post && deleted && post.id === deleted.id)(state.currentPost.post, state.currentPost.deletedPost)
 });
 
-export default connect(mapStateToProps)(Post);
+export default connect(mapStateToProps)(withRouter(Post));
