@@ -1,12 +1,21 @@
 import React, {Component} from "react";
 import {Link} from "react-router";
 import {connect} from 'react-redux';
-import {fetchPost} from "../actions";
+import {fetchPost, deletePost} from "../actions";
 
 class Post extends Component {
 
+    constructor(props) {
+        super(props);
+        this.deletePostHandler = this.deletePostHandler.bind(this);
+    }
+
     componentDidMount() {
         this.props.dispatch(fetchPost(this.props.params.id));
+    }
+
+    deletePostHandler() {
+        this.props.dispatch(deletePost(this.props.params.id));
     }
 
     render() {
@@ -26,8 +35,8 @@ class Post extends Component {
                 <Link to="/">
                     back to posts
                 </Link>
-                <button>
-                    delete posts
+                <button onClick={this.deletePostHandler}>
+                    delete post
                 </button>
 
                 <h2>{title}</h2>
