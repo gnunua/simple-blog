@@ -5,7 +5,10 @@ import {
     FETCH_POST_FAIL,
     DELETE_POST_START,
     DELETE_POST_FAIL,
-    DELETE_POST_SUCCESS, CREATE_POST_START, CREATE_POST_FAIL, CREATE_POST_SUCCESS
+    DELETE_POST_SUCCESS,
+    CREATE_POST_START,
+    CREATE_POST_FAIL,
+    CREATE_POST_SUCCESS
 } from "../actions/actionTypes";
 
 const initialData = {
@@ -29,13 +32,12 @@ const reducerPost = (state = initialData, action) => {
                 ...state,
                 fetchingState: asyncStatus(false, false, true, action.payload)
             };
-        case FETCH_POST_SUCCESS : {
+        case FETCH_POST_SUCCESS:
             return {
                 ...state,
                 fetchingState: asyncStatus(false, true, false, null),
                 currentPost: action.payload
             };
-        }
         case DELETE_POST_START:
             return {
                 ...state,
@@ -46,13 +48,12 @@ const reducerPost = (state = initialData, action) => {
                 ...state,
                 deletingState: asyncStatus(false, false, true, action.payload)
             };
-        case DELETE_POST_SUCCESS : {
+        case DELETE_POST_SUCCESS :
             return {
                 ...state,
                 deletingState: asyncStatus(false, true, false, null),
                 deletedPost: action.payload
             };
-        }
         case CREATE_POST_START:
             return {
                 ...state,
@@ -63,14 +64,12 @@ const reducerPost = (state = initialData, action) => {
                 ...state,
                 creatingState: asyncStatus(false, false, true, action.payload)
             };
-        case CREATE_POST_SUCCESS : {
+        case CREATE_POST_SUCCESS :
             return {
                 ...state,
                 creatingState: asyncStatus(false, true, false, null),
                 createdPost: action.payload
             };
-        }
-
         default:
             return state;
     }
