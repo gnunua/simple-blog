@@ -17,7 +17,7 @@ const fetchPostListFail = (err) => ({
 });
 
 export const fetchPostList = () => {
-    const request = fetch(`${API_BASE_URL}/posts/?${makeUtlQueryString({key: 123})}`);
+    const request = fetch(`${API_BASE_URL}/posts?${makeUtlQueryString({key: 123})}`);
 
     return function (dispatch) {
 
@@ -38,3 +38,43 @@ export const fetchPostList = () => {
 
     };
 };
+
+const fetchPostStart = () => ({
+    type: Actions.FETCH_POST_START
+});
+
+const fetchPostSuccess = (response) => ({
+    type: Actions.FETCH_POST_SUCCESS,
+    payload: response
+});
+
+const fetchPostFail = (err) => ({
+    type: Actions.FETCH_POST_FAIL,
+    payload: err
+});
+
+export const fetchPost = (id) => {
+
+    const request = fetch(`${API_BASE_URL}/posts/${id}?${makeUtlQueryString({key: 123})}`);
+
+    return function (dispatch) {
+
+        dispatch(fetchPostStart());
+
+        request
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (json) {
+                dispatch(fetchPostSuccess(json));
+                console.log('parsed json', json);
+            })
+            .catch(function (ex) {
+                dispatch(fetchPostFail(ex));
+                console.log('parsing failed', ex);
+            });
+
+    };
+
+};
+
