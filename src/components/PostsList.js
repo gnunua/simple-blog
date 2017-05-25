@@ -2,13 +2,9 @@ import React, {Component} from "react";
 import {Link} from "react-router";
 import {connect} from "react-redux";
 import {fetchPostList} from "../actions/index";
+import {postListSelector} from "../selectors";
 
 class PostsList extends Component {
-
-    constructor(props) {
-        super(props);
-        this.getList = this.getList.bind(this);
-    }
 
     componentDidMount() {
         this.props.dispatch(fetchPostList());
@@ -48,8 +44,6 @@ class PostsList extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    posts: state.postsList.posts
-});
+const mapStateToProps = (state) => ({...postListSelector(state)});
 
 export default connect(mapStateToProps)(PostsList);

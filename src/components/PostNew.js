@@ -4,6 +4,7 @@ import {Field, reduxForm} from 'redux-form';
 import {connect} from "react-redux";
 import {createPost} from "../actions";
 import FormFiled from "./FormFiled";
+import {createPostSelector} from "../selectors";
 
 class PostNew extends Component {
     constructor(props) {
@@ -16,7 +17,7 @@ class PostNew extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (this.props.isLoaded === false && nextProps.isLoaded === true) {
+        if (this.props.created === false && nextProps.created === true) {
             this.props.router.push('/');
         }
     }
@@ -56,7 +57,7 @@ const validate = (values) => {
     return errors;
 };
 
-const mapStateToProps = (state) => ({isLoaded: state.post.creatingState.isLoaded});
+const mapStateToProps = (state) => ({...createPostSelector(state)});
 
 export default reduxForm({
     form: 'createPost',

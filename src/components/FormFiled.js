@@ -11,7 +11,4 @@ const FormFiled = ({input, label, type, meta: {touched, error, warning}}) => (
         </div>
     </div>
 );
-
 export default FormFiled;
-
-

@@ -3,6 +3,7 @@ import {Link, withRouter} from "react-router";
 
 import {connect} from 'react-redux';
 import {fetchPost, deletePost} from "../actions";
+import {postSelector} from "../selectors";
 
 class Post extends Component {
     constructor(props) {
@@ -15,7 +16,7 @@ class Post extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (this.props.isLoaded === false && nextProps.isLoaded === true) {
+        if (this.props.deleted === false && nextProps.deleted === true) {
             this.props.router.push('/');
         }
     }
@@ -25,17 +26,13 @@ class Post extends Component {
     }
 
     render() {
-        if (!this.props.currentPost) {
+        if (!this.props.post) {
             return (null);
         }
-        const {currentPost: {title, categories, content}} = this.props;
+        const {post: {title, categories, content}} = this.props;
 
         return (
             <div>
-                <Link to="/">
-                    index
-                </Link>
-
                 <Link to="/">
                     back to posts
                 </Link>
@@ -51,9 +48,6 @@ class Post extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    currentPost: state.post.currentPost,
-    isLoaded: state.post.deletingState.isLoaded
-});
+const mapStateToProps = (state) => ({...postSelector(state)});
 
 export default connect(mapStateToProps)(withRouter(Post));
