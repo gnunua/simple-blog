@@ -1,36 +1,55 @@
-import React from "react";
+import React, {Component} from "react";
 import {Link} from "react-router";
+import {connect} from "react-redux";
+import {fetchPostList} from "../actions/index";
 
+class PostsList extends Component {
 
-const PostsList = () => {
-    return (
-        <div>
-            <ul>
-                <li>
-                    <Link to={"posts/" + 1}>
-                        post 1
+    constructor(props) {
+        super(props);
+        this.getList = this.getList.bind(this);
+    }
+
+    componentDidMount() {
+        this.props.dispatch(fetchPostList());
+    }
+
+    getList() {
+        const {posts} = this.props;
+
+        return posts.map(({id, title, categories}) => {
+            return (
+                <li key={id}>
+                    <Link to={"posts/" + id}>
+                        <span>
+                            title {title}
+                        </span>
+                        <span>
+                           category {categories}
+                        </span>
                     </Link>
                 </li>
+            );
+        });
+    }
 
-                <li>
-                    <Link to={"posts/" + 2}>
-                        post 2
-                    </Link>
-                </li>
+    render() {
+        return (
+            <div>
+                <ul>
+                    {this.getList()}
+                </ul>
 
-                <li>
-                    <Link to={"posts/" + 3}>
-                        post 3
-                    </Link>
-                </li>
+                <Link to="/posts/new">
+                    create a new post
+                </Link>
+            </div>
+        );
+    }
+}
 
-            </ul>
+const mapStateToProps = (state) => ({
+    posts: state.postsList.posts
+});
 
-            <Link to="/posts/new">
-                create a new post
-            </Link>
-        </div>
-    )
-};
-
-export default PostsList;
+export default connect(mapStateToProps)(PostsList);

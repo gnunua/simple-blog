@@ -1,8 +1,8 @@
 import {combineReducers} from "redux";
+import reducerPostsList from "./reducerPostsList";
 
 const rootReducer = combineReducers({
-    reducer1: foo => null,
-    reducer2: bar => null,
+    postsList: reducerPostsList
 });
 
 export default rootReducer;
