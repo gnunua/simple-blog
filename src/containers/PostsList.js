@@ -4,10 +4,17 @@ import {connect} from "react-redux";
 import {fetchPostList} from "../actions/index";
 import {postListSelector} from "../selectors";
 import PostListItem from "../components/PostListItem";
+import PropTypes from "prop-types";
 
 class PostsList extends Component {
+
+    static propTypes = {
+        posts: PropTypes.arrayOf(PropTypes.object).isRequired,
+        fetchPostList: PropTypes.func.isRequired
+    };
+
     componentDidMount() {
-        this.props.dispatch(fetchPostList());
+        this.props.fetchPostList();
     }
 
     render() {
@@ -31,4 +38,4 @@ class PostsList extends Component {
 
 const mapStateToProps = (state) => ({...postListSelector(state)});
 
-export default connect(mapStateToProps)(PostsList);
+export default connect(mapStateToProps, {fetchPostList})(PostsList);

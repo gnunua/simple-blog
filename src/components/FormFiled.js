@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const FormFiled = ({input, label, type, meta: {touched, error, warning}}) => (
     <div>
@@ -11,4 +12,12 @@ const FormFiled = ({input, label, type, meta: {touched, error, warning}}) => (
         </div>
     </div>
 );
+
+FormFiled.propTypes = {
+    input: PropTypes.object.isRequired,
+    label: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    meta: PropTypes.object.isRequired
+};
+
 export default FormFiled;

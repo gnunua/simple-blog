@@ -1,9 +1,15 @@
-import React, {Component} from 'react';
+import React, {Component} from "react";
+import PropTypes from "prop-types";
 
 class Loader extends Component {
     static defaultProps = {
         text: 'Loading',
         speed: 300
+    };
+
+    static propTypes = {
+        text: PropTypes.string.isRequired,
+        speed: PropTypes.number.isRequired
     };
 
     constructor(props) {

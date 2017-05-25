@@ -5,8 +5,18 @@ import {connect} from "react-redux";
 import {createPost} from "../actions";
 import FormFiled from "../components/FormFiled";
 import {createPostSelector} from "../selectors";
+import PropTypes from "prop-types";
 
 class PostNew extends Component {
+
+    static propTypes = {
+        created: PropTypes.bool.isRequired,
+        submitting: PropTypes.bool.isRequired,
+        pristine: PropTypes.bool.isRequired,
+        router: PropTypes.object.isRequired,
+        handleSubmit: PropTypes.func.isRequired
+    };
+
     constructor(props) {
         super(props);
         this.submitHandler = this.submitHandler.bind(this);
