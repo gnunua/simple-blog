@@ -1,6 +1,10 @@
 import * as Actions from "./actionTypes";
 import {createRequest, handleRequest} from "../helpers";
 
+export const resetPostList = () => ({
+    type: Actions.FETCH_POSTS_LIST_RESET
+});
+
 const fetchPostListStart = () => ({
     type: Actions.FETCH_POSTS_LIST_START
 });
@@ -21,6 +25,10 @@ export const fetchPostList = () => handleRequest(
     fetchPotListSuccess,
     fetchPostListFail
 );
+
+export const resetPost = () => ({
+    type: Actions.FETCH_POST_RESET
+});
 
 const fetchPostStart = () => ({
     type: Actions.FETCH_POST_START

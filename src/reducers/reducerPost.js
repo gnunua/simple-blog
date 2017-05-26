@@ -8,7 +8,8 @@ import {
     DELETE_POST_SUCCESS,
     CREATE_POST_START,
     CREATE_POST_FAIL,
-    CREATE_POST_SUCCESS
+    CREATE_POST_SUCCESS,
+    FETCH_POST_RESET
 } from "../actions/actionTypes";
 
 const initialData = {
@@ -37,6 +38,11 @@ const reducerPost = (state = initialData, action) => {
                 ...state,
                 fetchingState: asyncStatus(false, true, false, null),
                 currentPost: action.payload
+            };
+        case FETCH_POST_RESET:
+            return {
+                ...state,
+                fetchingState: asyncStatus()
             };
         case DELETE_POST_START:
             return {

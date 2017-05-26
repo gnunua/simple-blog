@@ -4,13 +4,15 @@ import {fetchPostList} from "../actions/index";
 import {postListSelector} from "../selectors";
 import PostListItem from "../components/PostListItem";
 import CustomLinkButton from "../components/CustomLinkButton";
+import Loader from "../components/Loader";
 import PropTypes from "prop-types";
 
 class PostsList extends Component {
 
     static propTypes = {
         posts: PropTypes.arrayOf(PropTypes.object).isRequired,
-        fetchPostList: PropTypes.func.isRequired
+        fetchPostList: PropTypes.func.isRequired,
+        isLoaded: PropTypes.bool.isRequired
     };
 
     componentDidMount() {
@@ -18,6 +20,12 @@ class PostsList extends Component {
     }
 
     render() {
+        if (this.props.isLoaded === false) {
+            return (
+                <Loader/>
+            );
+        }
+
         return (
             <div>
                 <ul>

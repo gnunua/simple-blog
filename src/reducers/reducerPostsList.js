@@ -1,5 +1,10 @@
 import {asyncStatus} from "../helpers";
-import {FETCH_POSTS_LIST_START, FETCH_POSTS_LIST_SUCCESS, FETCH_POSTS_LIST_FAIL} from "../actions/actionTypes";
+import {
+    FETCH_POSTS_LIST_START,
+    FETCH_POSTS_LIST_SUCCESS,
+    FETCH_POSTS_LIST_FAIL,
+    FETCH_POSTS_LIST_RESET
+} from "../actions/actionTypes";
 
 const initialData = {
     posts: [],
@@ -25,6 +30,11 @@ const reducerPostsList = (state = initialData, action) => {
                 posts: action.payload
             };
         }
+        case FETCH_POSTS_LIST_RESET :
+            return {
+                ...state,
+                fetchingState: asyncStatus()
+            };
         default:
             return state;
     }
