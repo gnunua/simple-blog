@@ -1,6 +1,8 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
 
 console.warn("Webpack running in production mode");
 
@@ -26,6 +28,8 @@ const plugins = [
 
     new webpack.optimize.OccurrenceOrderPlugin(),
 
+    new ExtractTextPlugin("styles.css"),
+
     new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify('production'),
         'version': JSON.stringify(require("./package.json").version)
@@ -47,6 +51,7 @@ const plugins = [
 module.exports = {
     entry: [
         'babel-polyfill',
+        './src/css/styles.css',
         './src/index.js'
     ],
 
@@ -66,7 +71,11 @@ module.exports = {
                 }
             },
             {
-                test: /\.css$/, loader: "style-loader!css-loader"
+                test: /\.css$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: "css-loader"
+                })
             }
         ]
     },
