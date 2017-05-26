@@ -48,17 +48,21 @@ class Post extends Component {
         return (
             <div>
 
-                <Link to="/">
-                    back to posts
-                </Link>
+                <div className="btn btn-link">
+                    <Link to="/">
+                        <span> Back to posts</span>
+                    </Link>
+                </div>
 
-                <button onClick={this.deletePostHandler}>
-                    delete post
+                <button
+                    className="btn btn-warning pull-right"
+                    onClick={this.deletePostHandler}>
+                    Delete post
                 </button>
 
-                <h2> {title}</h2>
-                <p>categries : {categories}</p>
-                <p>{content}</p>
+                <h3 className="text-success">{title}</h3>
+                <h4 className="text-primary">categories : {categories}</h4>
+                <p className="text-info">{content}</p>
             </div>
         );
     }

@@ -2,8 +2,10 @@ import React from "react";
 
 const Main = ({children}) => {
     return (
-        <div>
-            {children}
+        <div className="container">
+            <div className="jumbotron">
+                {children}
+            </div>
         </div>
     );
 };

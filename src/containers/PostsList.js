@@ -21,6 +21,12 @@ class PostsList extends Component {
         return (
             <div>
                 <ul>
+                    <div className="btn btn-default c-btn">
+                        <Link to="/posts/new">
+                            create a new post
+                        </Link>
+                    </div>
+
                     {
                         this.props.posts.map((post) => (
                             <PostListItem key={post.id} {...post}/>
@@ -28,9 +34,6 @@ class PostsList extends Component {
                     }
                 </ul>
 
-                <Link to="/posts/new">
-                    create a new post
-                </Link>
             </div>
         );
     }

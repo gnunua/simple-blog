@@ -3,13 +3,13 @@ import {Link} from "react-router";
 import PropTypes from "prop-types";
 
 const PostListItem = ({id, title, categories}) => (
-    <li>
+    <li className="list-group-item well well-sm font-weight-normal">
         <Link to={"posts/" + id}>
             <span>
-                title {title}
+                Title: {title},
             </span>
-            <span>
-                category {categories}
+            <span className="pull-right">
+                 Categories {categories}
             </span>
         </Link>
     </li>

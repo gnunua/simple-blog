@@ -37,14 +37,18 @@ class PostNew extends Component {
             <div>
                 <form onSubmit={this.props.handleSubmit(this.submitHandler)}>
                     <Field name="title" type="text" component={FormFiled} label="title"/>
-                    <Field name="category" type="text" component={FormFiled} label="category"/>
-                    <Field name="content" type="textarea" component={FormFiled} label="content"/>
-                    <button type="submit" disabled={this.props.submitting || this.props.pristine}>
+                    <Field name="categories" type="text" component={FormFiled} label="categories"/>
+                    <Field name="content" type="textarea" component={'textarea'} label="content"/>
+                    <button
+                        className="btn btn-default b-sub"
+                        type="submit" disabled={this.props.submitting || this.props.pristine}>
                         Submit
                     </button>
-                    <Link to="/">
-                        Cancel
-                    </Link>
+                    <div className="btn btn-info b-cen">
+                        <Link to="/">
+                            Cancel
+                        </Link>
+                    </div>
                 </form>
             </div>
         );
@@ -57,8 +61,8 @@ const validate = (values) => {
         errors.title = '*required';
     }
 
-    if (!values.category) {
-        errors.category = '*required';
+    if (!values.categories) {
+        errors.categories = '*required';
     }
 
     if (!values.content) {
