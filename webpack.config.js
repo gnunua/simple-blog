@@ -1,9 +1,14 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
 
 console.warn("Webpack running in development mode");
 
 const plugins = [
+
+    new ExtractTextPlugin("styles.css"),
+
     new HtmlWebpackPlugin({
         template: 'index.template.ejs',
         hash: true,
@@ -28,6 +33,7 @@ module.exports = {
 
     entry: [
         'babel-polyfill',
+        './src/css/styles.css',
         './src/index.js'
     ],
 
@@ -46,7 +52,11 @@ module.exports = {
                 }
             },
             {
-                test: /\.css$/, loader: "style-loader!css-loader"
+                test: /\.css$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: "css-loader"
+                })
             }
         ]
     },
