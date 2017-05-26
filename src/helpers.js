@@ -28,7 +28,7 @@ export const handleRequest = (request, start, success, fail) => dispatch => {
         });
 };
 
-export const createRequest = (variable, url, params = {key: "gnunuaapikey"}, payload) => {
+export const createRequest = (variable, url, params = {key: KEY}, payload) => {
     const fetchParams = {method: variable};
     if (variable === 'POST') {
         fetchParams.body = JSON.stringify(payload);
