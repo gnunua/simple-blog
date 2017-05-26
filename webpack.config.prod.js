@@ -51,6 +51,7 @@ const plugins = [
 module.exports = {
     entry: [
         'babel-polyfill',
+        'whatwg-fetch',
         './src/css/styles.css',
         './src/index.js'
     ],
