@@ -1,9 +1,10 @@
 import React, {Component} from "react";
-import {Link, withRouter} from "react-router";
+import {withRouter} from "react-router";
 import {Field, reduxForm} from 'redux-form';
 import {connect} from "react-redux";
 import {createPost} from "../actions";
 import FormFiled from "../components/FormFiled";
+import CustomLinkButton from "../components/CustomLinkButton";
 import {createPostSelector} from "../selectors";
 import PropTypes from "prop-types";
 
@@ -44,11 +45,9 @@ class PostNew extends Component {
                         type="submit" disabled={this.props.submitting || this.props.pristine}>
                         Submit
                     </button>
-                    <div className="btn btn-info b-cen">
-                        <Link to="/">
-                            Cancel
-                        </Link>
-                    </div>
+                    <CustomLinkButton classNameSeq={"btn btn-info b-cen"} to={"/"}>
+                        Cancel
+                    </CustomLinkButton>
                 </form>
             </div>
         );

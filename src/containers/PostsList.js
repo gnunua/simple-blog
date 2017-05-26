@@ -1,9 +1,9 @@
 import React, {Component} from "react";
-import {Link} from "react-router";
 import {connect} from "react-redux";
 import {fetchPostList} from "../actions/index";
 import {postListSelector} from "../selectors";
 import PostListItem from "../components/PostListItem";
+import CustomLinkButton from "../components/CustomLinkButton";
 import PropTypes from "prop-types";
 
 class PostsList extends Component {
@@ -21,11 +21,12 @@ class PostsList extends Component {
         return (
             <div>
                 <ul>
-                    <div className="btn btn-default c-btn">
-                        <Link to="/posts/new">
-                            create a new post
-                        </Link>
-                    </div>
+                    <CustomLinkButton
+                        classNameSeq={"btn btn-default c-btn"}
+                        to={"/posts/new"}
+                    >
+                        Create a new post
+                    </CustomLinkButton>
 
                     {
                         this.props.posts.map((post) => (
