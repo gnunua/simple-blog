@@ -3,7 +3,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-
 console.warn("Webpack running in production mode");
 
 const plugins = [
@@ -62,13 +61,15 @@ module.exports = {
     },
 
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: "babel-loader",
-                query: {
-                    presets: ['es2015', 'stage-0']
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['es2015', 'stage-0']
+                    }
                 }
             },
             {
@@ -80,6 +81,5 @@ module.exports = {
             }
         ]
     },
-
     plugins: plugins
 };

@@ -44,11 +44,15 @@ module.exports = {
     },
 
     module: {
-        loaders: [
+        rules: [
             {
-                test: /\.js$/, exclude: /node_modules/, loader: "babel-loader",
-                query: {
-                    presets: ['es2015', 'stage-0']
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['es2015', 'stage-0']
+                    }
                 }
             },
             {
