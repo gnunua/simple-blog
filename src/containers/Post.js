@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import {withRouter} from "react-router";
 import {connect} from 'react-redux';
 import {bindActionCreators} from "redux";
 import {fetchPost, deletePost, resetPost, resetPostList} from "../actions";
@@ -13,8 +12,8 @@ class Post extends Component {
     static propTypes = {
         post: PropTypes.object,
         deleted: PropTypes.bool.isRequired,
-        params: PropTypes.object.isRequired,
-        router: PropTypes.object.isRequired,
+        match: PropTypes.object.isRequired,
+        history: PropTypes.object.isRequired,
         fetchPost: PropTypes.func.isRequired,
         deletePost: PropTypes.func.isRequired,
         resetPostList: PropTypes.func.isRequired,
@@ -28,19 +27,19 @@ class Post extends Component {
     }
 
     componentDidMount() {
-        this.props.fetchPost(this.props.params.id);
+        this.props.fetchPost(this.props.match.params.id);
         this.props.resetPostList();
     }
 
     componentWillReceiveProps(nextProps) {
         if (this.props.deleted === false && nextProps.deleted === true) {
-            this.props.router.push('/');
+            this.props.history.push('/');
             this.props.resetPost();
         }
     }
 
     deletePostHandler() {
-        this.props.deletePost(this.props.params.id);
+        this.props.deletePost(this.props.match.params.id);
         this.props.resetPost();
     }
 
@@ -66,4 +65,4 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
     resetPost
 }, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Post));
+export default connect(mapStateToProps, mapDispatchToProps)(Post);

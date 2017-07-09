@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import {withRouter} from "react-router";
 import {Field, reduxForm} from 'redux-form';
 import {connect} from "react-redux";
 import {createPost} from "../actions";
@@ -14,7 +13,7 @@ class PostNew extends Component {
         created: PropTypes.bool.isRequired,
         submitting: PropTypes.bool.isRequired,
         pristine: PropTypes.bool.isRequired,
-        router: PropTypes.object.isRequired,
+        history: PropTypes.object.isRequired,
         handleSubmit: PropTypes.func.isRequired
     };
 
@@ -29,7 +28,7 @@ class PostNew extends Component {
 
     componentWillReceiveProps(nextProps) {
         if (this.props.created === false && nextProps.created === true) {
-            this.props.router.push('/');
+            this.props.history.push('/');
         }
     }
 
@@ -75,4 +74,4 @@ const mapStateToProps = (state) => ({...createPostSelector(state)});
 export default reduxForm({
     form: 'createPost',
     validate
-})(connect(mapStateToProps)(withRouter(PostNew)));
+})(connect(mapStateToProps)(PostNew));
