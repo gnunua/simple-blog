@@ -8,7 +8,8 @@
     "build-vendor:prod": "webpack --config webpack.vendor.config.js",
     "build:prod": "webpack --config webpack.config.prod.js -p",
     "build:dev": "webpack --config webpack.config.js",
-    "build-all:prod": "npm run build-vendor:prod && npm run build:prod"
+    "build-all:prod": "npm run build-vendor:prod && npm run build:prod",
+    "flow": "flow"
   },
   "repository": {
     "type": "git",
@@ -45,9 +46,11 @@
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-eslint": "^7.2.3",
     "babel-plugin-react-transform": "^2.0.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-flow": "^6.23.0",
     "babel-preset-stage-0": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
@@ -58,6 +61,7 @@
     "eslint-plugin-react": "^7.0.1",
     "eslint-plugin-standard": "^3.0.1",
     "extract-text-webpack-plugin": "^2.1.0",
+    "flow-bin": "^0.53.0",
     "html-webpack-plugin": "^2.28.0",
     "style-loader": "^0.18.1"
   }
