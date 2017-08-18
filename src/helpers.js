@@ -1,3 +1,5 @@
+// @flow
+
 import {API_BASE_URL, KEY} from "./consts";
 
 export const asyncStatus = (isStarted = false, isLoaded = false, isFailed = false, error = null) => ({

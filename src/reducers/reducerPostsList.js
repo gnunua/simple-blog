@@ -1,3 +1,5 @@
+// @flow
+
 import {asyncStatus} from "../helpers";
 import {
     FETCH_POSTS_LIST_START,

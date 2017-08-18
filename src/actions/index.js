@@ -1,3 +1,5 @@
+// @flow
+
 import * as Actions from "./actionTypes";
 import {createRequest, handleRequest} from "../helpers";
 
