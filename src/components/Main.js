@@ -2,7 +2,7 @@
 
 import React from "react";
 
-const Main = ({children}) => {
+const Main = ({children}:any) => {
     return (
         <div className="container">
             <div className="jumbotron">

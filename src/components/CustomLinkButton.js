@@ -4,7 +4,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 
-const CustomLinkButton = ({classNameSeq, to, children}) => (
+type Props = {
+    classNameSeq: string,
+    to: string,
+    children: any,
+};
+
+const CustomLinkButton = ({classNameSeq, to, children}: Props) => (
     <div className={classNameSeq}>
         <Link to={to}>
             {children}

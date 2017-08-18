@@ -4,7 +4,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import CustomLinkButton from "./CustomLinkButton";
 
-const PostContent = ({title, categories, content, deletePost}) => (
+type Props = {
+    title: string,
+    categories: string,
+    content: string,
+    deletePost: Function
+};
+
+const PostContent = ({title, categories, content, deletePost}: Props) => (
     <div>
         <CustomLinkButton
             classNameSeq={"btn btn-link"}

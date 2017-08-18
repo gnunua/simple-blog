@@ -2,7 +2,12 @@
 
 import {API_BASE_URL, KEY} from "./consts";
 
-export const asyncStatus = (isStarted = false, isLoaded = false, isFailed = false, error = null) => ({
+export const asyncStatus = (
+    isStarted: boolean = false,
+    isLoaded: boolean = false,
+    isFailed: boolean = false,
+    error = null
+) => ({
     isStarted,
     isLoaded,
     isFailed,
@@ -16,7 +21,7 @@ export const makeUtlQueryString = (params) => {
         .join('&');
 };
 
-export const handleRequest = (request, start, success, fail) => dispatch => {
+export const handleRequest = (request : Promise<any>, start: Function, success: Function, fail: Function) => (dispatch: Function) => {
     dispatch(start());
     request
         .then(checkStatus)
