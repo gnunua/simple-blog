@@ -1,8 +1,12 @@
 // @flow
 
-import React from "react";
+import * as React from "react";
 
-const Main = ({children}:any) => {
+type Props = {
+    children?: React.Node,
+};
+
+const Main = ({children}:Props) => {
     return (
         <div className="container">
             <div className="jumbotron">

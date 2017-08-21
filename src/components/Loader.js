@@ -44,7 +44,7 @@ class Loader extends React.Component<Props, State> {
     }
 
     componentDidMount() {
-        this.intervalId = setInterval(this.loadingTextModifier, this.props.spceed);
+        this.intervalId = setInterval(this.loadingTextModifier, this.props.speed);
     }
 
     componentWillUnmount() {

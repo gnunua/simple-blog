@@ -1,7 +1,6 @@
 // @flow
 
 import React from "react";
-import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 
 type Props = {
@@ -17,10 +16,5 @@ const CustomLinkButton = ({classNameSeq, to, children}: Props) => (
         </Link>
     </div>
 );
-
-CustomLinkButton.propTypes = {
-    classNameSeq: PropTypes.string,
-    to: PropTypes.string
-};
 
 export default CustomLinkButton;

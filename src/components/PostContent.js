@@ -31,11 +31,4 @@ const PostContent = ({title, categories, content, deletePost}: Props) => (
     </div>
 );
 
-PostContent.propTypes = {
-    title: PropTypes.string.isRequired,
-    categories: PropTypes.string.isRequired,
-    content: PropTypes.string.isRequired,
-    deletePost: PropTypes.func.isRequired
-};
-
 export default PostContent;

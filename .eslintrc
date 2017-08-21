@@ -31,7 +31,7 @@
   },
 
   "rules": {
-    "react/prop-types": [2, {"ignore": ["dispatch", "children"]}],
+    "react/prop-types": [1, {"ignore": ["dispatch", "children"]}],
     "accessor-pairs": 2,
     "arrow-spacing": [2, { "before": true, "after": true }],
     "block-spacing": [2, "always"],

@@ -3,7 +3,20 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const FormFiled = ({input, label, type, meta: {touched, error, warning}}) => (
+type Meta = {
+    touched: boolean,
+    error: string,
+    warning:string
+}
+
+type Props = {
+    input: Object,
+    label: string,
+    type: string,
+    meta: Meta
+}
+
+const FormFiled = ({input, label, type, meta: {touched, error, warning}} : Props) => (
     <div className="form-group">
         <label>{label}</label>
         <div>
@@ -15,11 +28,6 @@ const FormFiled = ({input, label, type, meta: {touched, error, warning}}) => (
     </div>
 );
 
-FormFiled.propTypes = {
-    input: PropTypes.object.isRequired,
-    label: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-    meta: PropTypes.object.isRequired
-};
+
 
 export default FormFiled;
