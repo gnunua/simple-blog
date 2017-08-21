@@ -1,20 +1,27 @@
 // @flow
 
-import React, {Component} from "react";
-import PropTypes from "prop-types";
+import * as React from "react";
 
-class Loader extends Component {
+type State = {
+    text: string,
+};
+
+type Props = {
+    text: string,
+    speed: number,
+};
+
+class Loader extends React.Component<Props, State> {
     static defaultProps = {
         text: 'Loading',
         speed: 300
     };
 
-    static propTypes = {
-        text: PropTypes.string.isRequired,
-        speed: PropTypes.number.isRequired
-    };
+    originalText: string;
+    loadingTextModifier: Function;
+    intervalId: number;
 
-    constructor(props) {
+    constructor(props:Props) {
         super(props);
         this.originalText = this.props.text;
         this.state = {
@@ -37,7 +44,7 @@ class Loader extends Component {
     }
 
     componentDidMount() {
-        this.intervalId = setInterval(this.loadingTextModifier, this.props.speed);
+        this.intervalId = setInterval(this.loadingTextModifier, this.props.spceed);
     }
 
     componentWillUnmount() {
