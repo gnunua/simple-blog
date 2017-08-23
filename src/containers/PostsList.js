@@ -1,21 +1,27 @@
 // @flow
 
-import React, {Component} from "react";
+import * as React from "react";
 import {connect} from "react-redux";
 import {fetchPostList} from "../actions/index";
 import {postListSelector} from "../selectors";
 import PostListItem from "../components/PostListItem";
 import CustomLinkButton from "../components/CustomLinkButton";
 import Loader from "../components/Loader";
-import PropTypes from "prop-types";
 
-class PostsList extends Component {
+type Post = {
+    id: string,
+    title: string,
+    categories: string,
+    id: number
+}
 
-    static propTypes = {
-        posts: PropTypes.arrayOf(PropTypes.object).isRequired,
-        fetchPostList: PropTypes.func.isRequired,
-        isLoaded: PropTypes.bool.isRequired
-    };
+type Props = {
+    posts: Array<Post>,
+    fetchPostList: Function,
+    isLoaded: boolean,
+}
+
+class PostsList extends React.Component<Props> {
 
     componentDidMount() {
         this.props.fetchPostList();
@@ -37,7 +43,6 @@ class PostsList extends Component {
                     >
                         Create a new post
                     </CustomLinkButton>
-
                     {
                         this.props.posts.map((post) => (
                             <PostListItem key={post.id} {...post}/>

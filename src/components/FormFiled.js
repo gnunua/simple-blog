@@ -9,7 +9,7 @@ type Meta = {
 }
 
 type Props = {
-    input: Object,
+    input: {},
     label: string,
     type: string,
     meta: Meta
