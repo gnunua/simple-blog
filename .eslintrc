@@ -20,16 +20,27 @@
     "standard",
     "promise",
     "react",
-    "import"
+    "import",
+    "flowtype"
   ],
-  "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:import/errors", "plugin:import/warnings"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:flowtype/recommended"
+  ],
   "globals": {
     "document": false,
     "navigator": false,
     "window": false,
     "module": true
   },
-
+  "settings": {
+    "flowtype": {
+      "onlyFilesWithFlowAnnotation": true
+    }
+  },
   "rules": {
     "react/prop-types": [1, {"ignore": ["dispatch", "children"]}],
     "accessor-pairs": 2,
