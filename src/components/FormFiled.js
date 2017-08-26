@@ -5,7 +5,7 @@ import React from "react";
 type Meta = {
     touched: boolean,
     error: string,
-    warning:string
+    warning: string
 }
 
 type Props = {
@@ -15,7 +15,7 @@ type Props = {
     meta: Meta
 }
 
-const FormFiled = ({input, label, type, meta: {touched, error, warning}} : Props) => (
+const FormFiled = ({input, label, type, meta: {touched, error, warning}}: Props) => (
     <div className="form-group">
         <label>{label}</label>
         <div>
@@ -26,7 +26,5 @@ const FormFiled = ({input, label, type, meta: {touched, error, warning}} : Props
         </div>
     </div>
 );
-
-
 
 export default FormFiled;

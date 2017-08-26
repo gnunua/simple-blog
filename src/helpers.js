@@ -21,7 +21,7 @@ export const makeUtlQueryString = (params) => {
         .join('&');
 };
 
-export const handleRequest = (request : Promise<any>, start: Function, success: Function, fail: Function) => (dispatch: Function) => {
+export const handleRequest = (request: Promise<any>, start: Function, success: Function, fail: Function) => (dispatch: Function) => {
     dispatch(start());
     request
         .then(checkStatus)

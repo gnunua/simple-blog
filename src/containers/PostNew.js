@@ -13,7 +13,7 @@ type Props = {
     submitting: boolean,
     pristine: boolean,
     history: {
-        push: (path:string)=>?any
+        push: (path: string)=>?any
     },
     handleSubmit: Function,
     dispatch: Function

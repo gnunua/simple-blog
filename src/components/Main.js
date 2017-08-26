@@ -6,7 +6,7 @@ type Props = {
     children?: React.Node,
 };
 
-const Main = ({children}:Props) => {
+const Main = ({children}: Props) => {
     return (
         <div className="container">
             <div className="jumbotron">

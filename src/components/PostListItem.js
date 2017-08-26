@@ -9,7 +9,7 @@ type Props = {
     id: number
 };
 
-const PostListItem = ({id, title, categories} : Props) => (
+const PostListItem = ({id, title, categories}: Props) => (
     <li className="list-group-item well well-sm font-weight-normal">
         <Link to={"posts/" + id}>
             <span>

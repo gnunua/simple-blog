@@ -21,7 +21,7 @@ class Loader extends React.Component<Props, State> {
     loadingTextModifier: Function;
     intervalId: number;
 
-    constructor(props:Props) {
+    constructor(props: Props) {
         super(props);
         this.originalText = this.props.text;
         this.state = {
