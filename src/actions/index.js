@@ -46,7 +46,7 @@ const fetchPostFail = (err) => ({
     payload: err
 });
 
-export const fetchPost = (id : string) => handleRequest(
+export const fetchPost = (id: string) => handleRequest(
     createRequest('GET', `/posts/${id}`),
     fetchPostStart,
     fetchPostSuccess,
@@ -67,7 +67,7 @@ const deletePostFail = (err) => ({
     payload: err
 });
 
-export const deletePost = (id:string) => handleRequest(
+export const deletePost = (id: string) => handleRequest(
     createRequest('DELETE', `/posts/${id}`),
     deletePostStart,
     deletePostSuccess,

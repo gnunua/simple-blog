@@ -7,23 +7,29 @@ import {fetchPost, deletePost, resetPost, resetPostList} from "../actions";
 import {postSelector} from "../selectors";
 import Loader from "../components/Loader";
 import PostContent from "../components/PostContent";
-import PropTypes from "prop-types";
 
-class Post extends Component {
+type Props = {
+    post: {},
+    deleted: boolean,
+    match: {
+        params: {
+            id: string,
+        }
+    },
+    history: {
+        push: (path: string)=>void
+    },
+    fetchPost: Function,
+    deletePost: Function,
+    resetPostList: Function,
+    resetPost: Function,
+    isLoaded: boolean
+}
 
-    static propTypes = {
-        post: PropTypes.object,
-        deleted: PropTypes.bool.isRequired,
-        match: PropTypes.object.isRequired,
-        history: PropTypes.object.isRequired,
-        fetchPost: PropTypes.func.isRequired,
-        deletePost: PropTypes.func.isRequired,
-        resetPostList: PropTypes.func.isRequired,
-        resetPost: PropTypes.func.isRequired,
-        isLoaded: PropTypes.bool.isRequired
-    };
+class Post extends Component<Props> {
+    deletePostHandler: ()=>void;
 
-    constructor(props) {
+    constructor(props: Props) {
         super(props);
         this.deletePostHandler = this.deletePostHandler.bind(this);
     }
