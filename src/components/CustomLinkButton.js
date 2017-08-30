@@ -1,12 +1,12 @@
 // @flow
 
-import React from "react";
+import * as React from "react";
 import {Link} from "react-router-dom";
 
 type Props = {
     classNameSeq: string,
     to: string,
-    children: any,
+    children?: React.Node;
 };
 
 const CustomLinkButton = ({classNameSeq, to, children}: Props) => (
