@@ -5,22 +5,21 @@ import * as React from "react";
 type State = {
     text: string,
 };
-
 type Props = {
     text: string,
     speed: number,
 };
 
 class Loader extends React.Component<Props, State> {
+    props: Props;
+    originalText: string;
+    loadingTextModifier: ()=>void;
+    intervalId: number;
+
     static defaultProps = {
         text: 'Loading',
         speed: 300
     };
-
-    originalText: string;
-    loadingTextModifier: Function;
-    intervalId: number;
-
     constructor(props: Props) {
         super(props);
         this.originalText = this.props.text;

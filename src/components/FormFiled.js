@@ -2,17 +2,15 @@
 
 import React from "react";
 
-type Meta = {
-    touched: boolean,
-    error: string,
-    warning: string
-}
-
 type Props = {
     input: {},
     label: string,
     type: string,
-    meta: Meta
+    meta: {
+        touched: boolean,
+        error: string,
+        warning: string
+    }
 }
 
 const FormFiled = ({input, label, type, meta: {touched, error, warning}}: Props) => (

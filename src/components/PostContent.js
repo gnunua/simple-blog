@@ -1,14 +1,13 @@
 // @flow
 
 import React from "react";
-import PropTypes from "prop-types";
 import CustomLinkButton from "./CustomLinkButton";
 
 type Props = {
     title: string,
     categories: string,
     content: string,
-    deletePost: Function
+    deletePost: ()=>void
 };
 
 const PostContent = ({title, categories, content, deletePost}: Props) => (
