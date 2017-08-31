@@ -7,13 +7,21 @@ import {
     FETCH_POSTS_LIST_FAIL,
     FETCH_POSTS_LIST_RESET
 } from "../actions/actionTypes";
+import type {Post} from "./reducerPost";
+import type {AsyncStatus} from "../helpers";
+import type {PostsAction} from "../actions";
 
-const initialData = {
+export type PostsListState = {
+    +posts: Array<Post>,
+    +fetchingState: AsyncStatus
+}
+
+const initialData:PostsListState = {
     posts: [],
     fetchingState: asyncStatus()
 };
 
-const reducerPostsList = (state = initialData, action) => {
+const reducerPostsList = (state: PostsListState = initialData, action: PostsAction): PostsListState => {
     switch (action.type) {
         case FETCH_POSTS_LIST_START:
             return {

@@ -10,20 +10,26 @@ export type SimpleAction = {
     payload?: Post
 };
 
-export const resetPostList = (): SimpleAction => ({
+export type PostsAction = {
+    type: string,
+    error?: string,
+    payload?: Array<Post>
+}
+
+export const resetPostList = (): PostsAction => ({
     type: Actions.FETCH_POSTS_LIST_RESET
 });
 
-const fetchPostListStart = (): SimpleAction => ({
+const fetchPostListStart = (): PostsAction => ({
     type: Actions.FETCH_POSTS_LIST_START
 });
 
-const fetchPotListSuccess = (response): SimpleAction => ({
+const fetchPotListSuccess = (response): PostsAction => ({
     type: Actions.FETCH_POSTS_LIST_SUCCESS,
     payload: response
 });
 
-const fetchPostListFail = (err): SimpleAction => ({
+const fetchPostListFail = (err): PostsAction => ({
     type: Actions.FETCH_POSTS_LIST_FAIL,
     payload: err
 });
