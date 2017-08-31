@@ -3,11 +3,12 @@
 import React, {Component} from "react";
 import {connect} from 'react-redux';
 import {bindActionCreators} from "redux";
-import type { Dispatch } from "redux";
 import {fetchPost, deletePost, resetPost, resetPostList} from "../actions";
 import {postSelector} from "../selectors";
 import Loader from "../components/Loader";
 import PostContent from "../components/PostContent";
+import type { Dispatch } from "redux";
+
 
 type Props = {
     post: {},
@@ -28,6 +29,7 @@ type Props = {
 }
 
 class Post extends Component<Props> {
+    props: Props;
     deletePostHandler: ()=>void;
 
     constructor(props: Props) {
