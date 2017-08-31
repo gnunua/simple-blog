@@ -3,6 +3,7 @@
 import React, {Component} from "react";
 import {connect} from 'react-redux';
 import {bindActionCreators} from "redux";
+import type { Dispatch } from "redux";
 import {fetchPost, deletePost, resetPost, resetPostList} from "../actions";
 import {postSelector} from "../selectors";
 import Loader from "../components/Loader";
@@ -66,7 +67,7 @@ class Post extends Component<Props> {
 
 const mapStateToProps = (state) => ({...postSelector(state)});
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({
+const mapDispatchToProps = (dispatch: Dispatch<*>) => bindActionCreators({
     fetchPost,
     deletePost,
     resetPostList,
