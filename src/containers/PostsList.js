@@ -22,6 +22,7 @@ type Props = {
 }
 
 class PostsList extends React.Component<Props> {
+    props: Props;
 
     componentDidMount() {
         this.props.fetchPostList();

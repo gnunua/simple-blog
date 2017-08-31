@@ -1,4 +1,5 @@
 // @flow
+
 import {createSelector} from "reselect";
 
 const currentPostInput = (state) => state.post.currentPost;

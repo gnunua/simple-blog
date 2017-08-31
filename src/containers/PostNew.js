@@ -20,6 +20,7 @@ type Props = {
 }
 
 class PostNew extends React.Component<Props> {
+    props: Props;
     submitHandler: Function;
 
     constructor(props) {
