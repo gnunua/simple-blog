@@ -2,12 +2,19 @@
 
 import {API_BASE_URL, KEY} from "./consts";
 
+export type AsyncStatus = {|
+    isStarted: boolean,
+    isLoaded: boolean,
+    isFailed: boolean,
+    error: ?any,
+|}
+
 export const asyncStatus = (
     isStarted: boolean = false,
     isLoaded: boolean = false,
     isFailed: boolean = false,
-    error: ?null = null
-) => ({
+    error: ?{} = null
+): AsyncStatus => ({
     isStarted,
     isLoaded,
     isFailed,

@@ -1,6 +1,9 @@
 // @flow
 
 import {asyncStatus} from "../helpers";
+import type {AsyncStatus} from "../helpers";
+import type {SimpleAction} from "../actions";
+
 import {
     FETCH_POST_START,
     FETCH_POST_SUCCESS,
@@ -14,7 +17,23 @@ import {
     FETCH_POST_RESET
 } from "../actions/actionTypes";
 
-const initialData = {
+export type Post = {|
+    id: number,
+    title: ?string,
+    categories: ?string,
+    content: ?string
+|}
+
+export type PostState = {
+    +currentPost: ?Post,
+    +fetchingState: AsyncStatus,
+    +deletedPost: ?Post,
+    +deletingState: AsyncStatus,
+    +createdPost: ?Post,
+    +creatingState: AsyncStatus
+}
+
+const initialData:PostState = {
     currentPost: null,
     fetchingState: asyncStatus(),
     deletedPost: null,
@@ -23,7 +42,7 @@ const initialData = {
     creatingState: asyncStatus()
 };
 
-const reducerPost = (state = initialData, action) => {
+const reducerPost = (state: PostState = initialData, action: SimpleAction): PostState => {
     switch (action.type) {
         case FETCH_POST_START:
             return {
