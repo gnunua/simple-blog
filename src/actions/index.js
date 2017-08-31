@@ -4,32 +4,26 @@ import * as Actions from "./actionTypes";
 import {createRequest, handleRequest} from "../helpers";
 import type {Post} from "../reducers/reducerPost";
 
-export type SimpleAction = {
-    type: string,
-    error?: string,
-    payload?: Post
-};
+export type Action =
+    | {type: string}
+    | {type: string, error: ?string}
+    | {type: string, payload: ?Array<Post>}
+    | {type: string, payload: ?Post}
 
-export type PostsAction = {
-    type: string,
-    error?: string,
-    payload?: Array<Post>
-}
-
-export const resetPostList = (): PostsAction => ({
+export const resetPostList = (): Action => ({
     type: Actions.FETCH_POSTS_LIST_RESET
 });
 
-const fetchPostListStart = (): PostsAction => ({
+const fetchPostListStart = (): Action => ({
     type: Actions.FETCH_POSTS_LIST_START
 });
 
-const fetchPotListSuccess = (response): PostsAction => ({
+const fetchPotListSuccess = (response): Action => ({
     type: Actions.FETCH_POSTS_LIST_SUCCESS,
     payload: response
 });
 
-const fetchPostListFail = (err): PostsAction => ({
+const fetchPostListFail = (err): Action => ({
     type: Actions.FETCH_POSTS_LIST_FAIL,
     payload: err
 });
@@ -41,20 +35,20 @@ export const fetchPostList = () => handleRequest(
     fetchPostListFail
 );
 
-export const resetPost = (): SimpleAction => ({
+export const resetPost = (): Action => ({
     type: Actions.FETCH_POST_RESET
 });
 
-const fetchPostStart = (): SimpleAction => ({
+const fetchPostStart = (): Action => ({
     type: Actions.FETCH_POST_START
 });
 
-const fetchPostSuccess = (response): SimpleAction => ({
+const fetchPostSuccess = (response): Action => ({
     type: Actions.FETCH_POST_SUCCESS,
     payload: response
 });
 
-const fetchPostFail = (err): SimpleAction => ({
+const fetchPostFail = (err): Action => ({
     type: Actions.FETCH_POST_FAIL,
     payload: err
 });
@@ -66,16 +60,16 @@ export const fetchPost = (id: string) => handleRequest(
     fetchPostFail
 );
 
-const deletePostStart = (): SimpleAction => ({
+const deletePostStart = (): Action => ({
     type: Actions.DELETE_POST_START
 });
 
-const deletePostSuccess = (response): SimpleAction => ({
+const deletePostSuccess = (response): Action => ({
     type: Actions.DELETE_POST_SUCCESS,
     payload: response
 });
 
-const deletePostFail = (err): SimpleAction => ({
+const deletePostFail = (err): Action => ({
     type: Actions.DELETE_POST_FAIL,
     payload: err
 });
@@ -87,16 +81,16 @@ export const deletePost = (id: string) => handleRequest(
     deletePostFail
 );
 
-const createPostStart = (): SimpleAction => ({
+const createPostStart = (): Action => ({
     type: Actions.CREATE_POST_START
 });
 
-const createPostSuccess = (response): SimpleAction => ({
+const createPostSuccess = (response): Action => ({
     type: Actions.CREATE_POST_SUCCESS,
     payload: response
 });
 
-const createPostFail = (err): SimpleAction => ({
+const createPostFail = (err): Action => ({
     type: Actions.CREATE_POST_FAIL,
     payload: err
 });

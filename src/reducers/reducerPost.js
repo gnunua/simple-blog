@@ -2,7 +2,7 @@
 
 import {asyncStatus} from "../helpers";
 import type {AsyncStatus} from "../helpers";
-import type {SimpleAction} from "../actions";
+import type {Action} from "../actions";
 
 import {
     FETCH_POST_START,
@@ -42,7 +42,7 @@ const initialData:PostState = {
     creatingState: asyncStatus()
 };
 
-const reducerPost = (state: PostState = initialData, action: SimpleAction): PostState => {
+const reducerPost = (state: PostState = initialData, action: Action): PostState => {
     switch (action.type) {
         case FETCH_POST_START:
             return {

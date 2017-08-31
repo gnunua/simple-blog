@@ -13,7 +13,7 @@ export const asyncStatus = (
     isStarted: boolean = false,
     isLoaded: boolean = false,
     isFailed: boolean = false,
-    error: ?mixed = null
+    error: ?string = null
 ): AsyncStatus => ({
     isStarted,
     isLoaded,
