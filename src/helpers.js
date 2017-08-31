@@ -13,7 +13,7 @@ export const asyncStatus = (
     isStarted: boolean = false,
     isLoaded: boolean = false,
     isFailed: boolean = false,
-    error: ?string = null
+    error: ?any = null
 ): AsyncStatus => ({
     isStarted,
     isLoaded,
@@ -21,7 +21,7 @@ export const asyncStatus = (
     error
 });
 
-export const makeUtlQueryString = (params) => {
+export const makeUtlQueryString = (params: Object) => {
     const esc = encodeURIComponent;
     return Object.keys(params)
         .map(k => esc(k) + '=' + esc(params[k]))

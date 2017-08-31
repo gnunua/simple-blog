@@ -2,20 +2,7 @@
 
 import {asyncStatus} from "../helpers";
 import type {AsyncStatus} from "../helpers";
-import type {Action} from "../actions";
-
-import {
-    FETCH_POST_START,
-    FETCH_POST_SUCCESS,
-    FETCH_POST_FAIL,
-    DELETE_POST_START,
-    DELETE_POST_FAIL,
-    DELETE_POST_SUCCESS,
-    CREATE_POST_START,
-    CREATE_POST_FAIL,
-    CREATE_POST_SUCCESS,
-    FETCH_POST_RESET
-} from "../actions/actionTypes";
+import type {Action} from "../actions/types";
 
 export type Post = {|
     id: number,
@@ -44,54 +31,54 @@ const initialData:PostState = {
 
 const reducerPost = (state: PostState = initialData, action: Action): PostState => {
     switch (action.type) {
-        case FETCH_POST_START:
+        case 'FETCH_POST_START':
             return {
                 ...state,
                 fetchingState: asyncStatus(true)
             };
-        case FETCH_POST_FAIL:
+        case 'FETCH_POST_FAIL':
             return {
                 ...state,
                 fetchingState: asyncStatus(false, false, true, action.payload)
             };
-        case FETCH_POST_SUCCESS:
+        case 'FETCH_POST_SUCCESS':
             return {
                 ...state,
                 fetchingState: asyncStatus(false, true, false, null),
                 currentPost: action.payload
             };
-        case FETCH_POST_RESET:
+        case 'FETCH_POST_RESET':
             return {
                 ...state,
                 fetchingState: asyncStatus()
             };
-        case DELETE_POST_START:
+        case 'DELETE_POST_START':
             return {
                 ...state,
                 deletingState: asyncStatus(true)
             };
-        case DELETE_POST_FAIL:
+        case 'DELETE_POST_FAIL':
             return {
                 ...state,
                 deletingState: asyncStatus(false, false, true, action.payload)
             };
-        case DELETE_POST_SUCCESS :
+        case 'DELETE_POST_SUCCESS' :
             return {
                 ...state,
                 deletingState: asyncStatus(false, true, false, null),
                 deletedPost: action.payload
             };
-        case CREATE_POST_START:
+        case 'CREATE_POST_START':
             return {
                 ...state,
                 creatingState: asyncStatus(true)
             };
-        case CREATE_POST_FAIL:
+        case 'CREATE_POST_FAIL':
             return {
                 ...state,
                 creatingState: asyncStatus(false, false, true, action.payload)
             };
-        case CREATE_POST_SUCCESS :
+        case 'CREATE_POST_SUCCESS':
             return {
                 ...state,
                 creatingState: asyncStatus(false, true, false, null),

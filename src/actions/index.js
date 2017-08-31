@@ -2,13 +2,7 @@
 
 import * as Actions from "./actionTypes";
 import {createRequest, handleRequest} from "../helpers";
-import type {Post} from "../reducers/reducerPost";
-
-export type Action =
-    | {type: string}
-    | {type: string, error: ?string}
-    | {type: string, payload: ?Array<Post>}
-    | {type: string, payload: ?Post}
+import type {Action} from "./types.js";
 
 export const resetPostList = (): Action => ({
     type: Actions.FETCH_POSTS_LIST_RESET

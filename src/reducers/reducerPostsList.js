@@ -1,15 +1,9 @@
 // @flow
 
 import {asyncStatus} from "../helpers";
-import {
-    FETCH_POSTS_LIST_START,
-    FETCH_POSTS_LIST_SUCCESS,
-    FETCH_POSTS_LIST_FAIL,
-    FETCH_POSTS_LIST_RESET
-} from "../actions/actionTypes";
 import type {Post} from "./reducerPost";
 import type {AsyncStatus} from "../helpers";
-import type {PostsAction} from "../actions";
+import type {Action} from "../actions/types";
 
 export type PostsListState = {
     +posts: Array<Post>,
@@ -21,26 +15,24 @@ const initialData:PostsListState = {
     fetchingState: asyncStatus()
 };
 
-const reducerPostsList = (state: PostsListState = initialData, action: PostsAction): PostsListState => {
+const reducerPostsList = (state: PostsListState = initialData, action: Action): PostsListState => {
     switch (action.type) {
-        case FETCH_POSTS_LIST_START:
+        case 'FETCH_POSTS_LIST_START':
             return {
                 ...state,
                 fetchingState: asyncStatus(true)
             };
-        case FETCH_POSTS_LIST_FAIL:
+        case 'FETCH_POSTS_LIST_FAIL':
             return {
                 ...state,
                 fetchingState: asyncStatus(false, false, true, action.payload)
             };
-        case FETCH_POSTS_LIST_SUCCESS : {
+        case 'FETCH_POSTS_LIST_SUCCESS' :
             return {
-                ...state,
-                fetchingState: asyncStatus(false, true, false, null),
+                fetchingState: asyncStatus(false, true, false, action.payload),
                 posts: action.payload
             };
-        }
-        case FETCH_POSTS_LIST_RESET :
+        case 'FETCH_POSTS_LIST_RESET' :
             return {
                 ...state,
                 fetchingState: asyncStatus()
