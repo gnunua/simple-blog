@@ -1,14 +1,7 @@
 // @flow
 
 import {asyncStatus} from "../helpers";
-import type {Post} from "./reducerPost";
-import type {AsyncStatus} from "../helpers";
-import type {Action} from "../actions/types";
-
-export type PostsListState = {
-    +posts: Array<Post>,
-    +fetchingState: AsyncStatus
-}
+import type {PostsListState} from "../types";
 
 const initialData:PostsListState = {
     posts: [],

@@ -1,24 +1,7 @@
 // @flow
 
 import {asyncStatus} from "../helpers";
-import type {AsyncStatus} from "../helpers";
-import type {Action} from "../actions/types";
-
-export type Post = {|
-    id: number,
-    title: ?string,
-    categories: ?string,
-    content: ?string
-|}
-
-export type PostState = {
-    +currentPost: ?Post,
-    +fetchingState: AsyncStatus,
-    +deletedPost: ?Post,
-    +deletingState: AsyncStatus,
-    +createdPost: ?Post,
-    +creatingState: AsyncStatus
-}
+import type {PostState} from '../types';
 
 const initialData:PostState = {
     currentPost: null,

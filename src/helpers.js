@@ -1,13 +1,7 @@
 // @flow
 
 import {API_BASE_URL, KEY} from "./consts";
-
-export type AsyncStatus = {|
-    isStarted: boolean,
-    isLoaded: boolean,
-    isFailed: boolean,
-    error: ?any,
-|}
+import type {AsyncStatus} from "./types";
 
 export const asyncStatus = (
     isStarted: boolean = false,
