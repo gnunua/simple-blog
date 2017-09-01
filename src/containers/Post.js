@@ -7,20 +7,16 @@ import {fetchPost, deletePost, resetPost, resetPostList} from "../actions";
 import {postSelector} from "../selectors";
 import Loader from "../components/Loader";
 import PostContent from "../components/PostContent";
-import type { Dispatch } from "redux";
+import type { State, Post as PostType } from "../types";
 
+type History = {
+    push: (path: string)=>?any
+}
 
 type Props = {
-    post: {},
+    history: History,
+    post: PostType,
     deleted: boolean,
-    match: {
-        params: {
-            id: string,
-        }
-    },
-    history: {
-        push: (path: string)=>void
-    },
     fetchPost: Function,
     deletePost: Function,
     resetPostList: Function,
@@ -29,7 +25,6 @@ type Props = {
 }
 
 class Post extends Component<Props> {
-    props: Props;
     deletePostHandler: ()=>void;
 
     constructor(props: Props) {
@@ -67,7 +62,7 @@ class Post extends Component<Props> {
     }
 }
 
-const mapStateToProps = (state) => ({...postSelector(state)});
+const mapStateToProps = (state: State) => ({...postSelector(state)});
 
 const mapDispatchToProps = (dispatch: Dispatch<*>) => bindActionCreators({
     fetchPost,

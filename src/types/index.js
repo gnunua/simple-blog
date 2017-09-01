@@ -30,7 +30,7 @@ export type PostsListState = {
     +fetchingState: AsyncStatus
 }
 
-type State = {
-    postsList: PostsListState,
-    post: PostState,
+export type State = {
+    +postsList: PostsListState,
+    +post: PostState,
 };

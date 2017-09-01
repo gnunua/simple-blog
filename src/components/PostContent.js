@@ -2,13 +2,11 @@
 
 import React from "react";
 import CustomLinkButton from "./CustomLinkButton";
+import type {Post} from "../types";
 
-type Props = {
-    title: string,
-    categories: string,
-    content: string,
-    deletePost: ()=>void
-};
+type DeletePost = ()=>void;
+
+type Props = Post & DeletePost;
 
 const PostContent = ({title, categories, content, deletePost}: Props) => (
     <div>
