@@ -13,7 +13,6 @@ const plugins = [
         hash: true,
         title: 'blog'
     }),
-    new webpack.optimize.OccurrenceOrderPlugin(),
 
     new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify('development'),
