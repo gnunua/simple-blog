@@ -1,6 +1,50 @@
+body {
+	background:linear-gradient(230deg, #a24bcf, #4b79cf, #4bc5cf);
+    background-image: linear-gradient(230deg, rgb(162, 75, 207), rgb(75, 121, 207));
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: 700% 700%;
+    background-repeat-x: initial;
+    background-repeat-y: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+    animation: MoveBG 60s ease infinite;
+    animation-name: MoveBG;
+    animation-duration: 60s;
+    animation-timing-function: ease;
+    animation-delay: initial;
+    animation-iteration-count: infinite;
+    animation-direction: initial;
+    animation-fill-mode: initial;
+    animation-play-state: initial;
+}
+
+@-webkit-keyframes MoveBG {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes MoveBG {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes MoveBG { 
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
 a {
-    display: block;
-    height: 100%;
+	display: block;
+	height: 100%;
+	color: black;
+}
+
+a:hover {
+	text-decoration: none;
 }
 
 .c-btn {
@@ -29,6 +73,14 @@ textarea {
     border-radius: 4px;
 }
 
+.jumbotron {
+	margin-top: 2%;
+	background-color: rgba(0, 0, 0, 0.1);
+	border-top-left-radius: 25px !important;
+	border-bottom-right-radius: 25px !important;
+	border: 5px solid white;
+}
+
 .b-sub {
     margin-top: 10px;
 }
@@ -36,4 +88,24 @@ textarea {
 .b-cen {
     margin-left: 20px;
     margin-top: 10px;
+}
+
+span {
+	color: black;
+}
+
+div>span {
+	color:blue;
+	font-style: italic;
+}
+
+h4 {
+	margin-left: 1.3%;
+	color: black !important;
+}
+
+@media only screen and (max-width: 500px) {
+    h4 {
+        margin-left: 5%;
+    }
 }
